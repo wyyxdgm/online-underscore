@@ -1,0 +1,15 @@
+<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('.run').click(function() {
+        $.getScript('new.js', function() {
+            newFun('"Checking new script"'); //这个函数是在new.js里面的，当点击click后运行这个函数
+        });
+    });
+});
+</script>
+</head>
+
+<body>
+    <button type="button" class="run" id="loadButton">Load</button>
+</body>
