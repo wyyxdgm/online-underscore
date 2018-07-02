@@ -30,7 +30,7 @@
         $('.run').click(function() {
             let input = $('.input').val();
             console.log(input)
-            $('.output').val(input);
+            $('.output').val('');
             let url = $(".select").val();
             console.log($(".select").text(), $(".select").val())
             $.get(url, function(res) {
