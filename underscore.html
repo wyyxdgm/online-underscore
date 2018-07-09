@@ -27,21 +27,26 @@
             $(".select").append('<option value="' + arr[i].url + '">' + arr[i].text + '</option>');
         }
         $(".select").val(arr[0].url);
-        console.log($(".select").val())
+        // console.log($(".select").val())
+        console.log = function(output) {
+            $('.output').val($('.output').val() + '\n' + output);
+        }
         $('.run').click(function() {
             let input = $('.input').val();
-            if (!input) return console.log('Nothing!');
-            else console.log('Input:', input)
+            if (!input) return alert('Nothing!');
+            else console.info('Input:', input)
             $('.output').val('');
             let url = $(".select").val();
-            console.log($(".select").text(), $(".select").val())
+            console.info($(".select").text(), $(".select").val())
+
             $.get(url, function(res) {
-                console.log(res)
+                console.info(res)
                 window._ = undefined;
                 eval(res.replace(".call(this);", "();"));
-                let output = eval(input + '.toString()');
-                console.log(window._)
-                $('.output').val(output);
+                let output = eval(input);
+                console.log(output)
+                // console.log(window._)
+                // $('.output').val(output);
             });
         });
     });
