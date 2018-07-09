@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>online code</title>
     <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://raw.githubusercontent.com/jashkenas/underscore/78887cffb53ed372811b5cc1239e0ecdf701a5c8/underscore-min.js"></script> -->
     <script type="text/javascript">
     $(function() {
         let arr = [
@@ -35,8 +36,10 @@
             console.log($(".select").text(), $(".select").val())
             $.get(url, function(res) {
                 console.log(res)
-                eval(res);
+                window._ = undefined;
+                eval(res.replace(".call(this);","();"));
                 let output = eval(input + '.toString()');
+                console.log(window._)
                 $('.output').val(output);
             });
         });
@@ -67,11 +70,14 @@
     	font-size: 12px;
     	text-align: center;
     }
+    .text-center{
+        text-align: center;
+    }
     </style>
 </head>
 
 <body>
-    Underscore
+    <h1 class="text-center">Underscore在线测试代码</h1>
     <select class="select">
     </select>
     <textarea class="textarea input"></textarea>
